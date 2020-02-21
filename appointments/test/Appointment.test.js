@@ -22,7 +22,7 @@ describe('Appointment', () => {
 
 describe("AppointmentsDayView", () => {
     let container; 
-
+    
     beforeEach(() => {
         container = document.createElement("div");
     });
@@ -32,11 +32,12 @@ describe("AppointmentsDayView", () => {
     it("renders a div with the right id", () => {
         const today = new Date();
         const appointments = [
-            {startsAs: today.setHours(12, 0)},
-            {startsAs: today.setHours(13, 0)}
+            {startsAt: today.setHours(12, 0)},
+            {startsAt: today.setHours(13, 0)}
         ]
         render(<AppointmentsDayView appointments={appointments} />);
         expect(container.querySelector('ol').children).toHaveLength(2);
+        expect(container.querySelectorAll('li')[1].textContent).toEqual('13:00');
     });
     
 });
