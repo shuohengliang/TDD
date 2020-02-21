@@ -1,26 +1,42 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { Appointment } from '../src/Appointment';
+import { Appointment, AppointmentsDayView } from '../src/Appointments';
 
 describe('Appointment', () => {  
-//     let container; 
-//     let customer;
+    let container; 
+    let customer;
 
-//     beforeEach(() => {
-//         container = document.createElement('div');
-//     });
+    beforeEach(() => {
+        container = document.createElement('div');
+    });
+    const render = component => ReactDOM.render(component, container); 
 
-//     const render = component => ReactDOM.render(component, container); 
-
-it('renders the customer first name', () => {
+    it('renders the customer first name', () => {  
+        customer = {firstName: 'Jordon'};
+        render(<Appointment customer={customer}/>);
+        expect(container.textContent).toMatch('Jordon');
+    }); 
     
-    expect(document.body.textContent).toMatch('Ashley');
 });
-    // it('renders the customer first name', () => {  
-    //     customer = {firstName: 'Jordon'};
-    //     render(<Appointment customer={customer}/>);
-    //     espect(container.textContent).toMatch('Jordon');
-    // }); 
+
+describe("AppointmentsDayView", () => {
+    let container; 
+
+    beforeEach(() => {
+        container = document.createElement("div");
+    });
+
+    const render = component => ReactDOM.render(component, container);
+
+    it("renders a div with the right id", () => {
+        const today = new Date();
+        const appointments = [
+            {startsAs: today.setHours(12, 0)},
+            {startsAs: today.setHours(13, 0)}
+        ]
+        render(<AppointmentsDayView appointments={appointments} />);
+        expect(container.querySelector('ol').children).toHaveLength(2);
+    });
     
 });
