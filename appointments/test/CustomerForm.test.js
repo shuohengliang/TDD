@@ -28,6 +28,12 @@ describe('CustomerForm', () => {
         // expect(filed.tagName).toEqual('INPUT');
         // expect(field.type).toEqual('text');
         expectToBeInputFieldOfTypeText(field);
-
     });
+
+    it("includes the existing value for the first name", () => {
+        render(<CustomerForm firstName="Ashley" />);
+        const field = form('customer').elements.firstName;
+        expect(field.value).toEqual('Ashley');
+    });
+
 });
