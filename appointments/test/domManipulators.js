@@ -4,7 +4,7 @@ export const createContainer = () => {
     const container = document.createElement('div');
 
     return {
-        render: componemt => ReactDOM.render(compnemt, container), 
+        render: componemt => ReactDOM.render(componemt, container), 
         container
     };
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import {createContainer} from './domManipulators';
-import {customerForm} from '../src/CustomerForm'
+import {CustomerForm} from '../src/CustomerForm'
 
 
 describe('CustomerForm', () => {
@@ -12,6 +12,6 @@ describe('CustomerForm', () => {
     
     it('renders a form', () => {
         render(<CustomerForm />);
-        expect(container.querySelector('fomr[id="Customer"]')).not.tobeNull();
+        expect(container.querySelector('form[id="customer"]')).not.toBeNull();
     });
 });
