@@ -32,4 +32,15 @@ describe('CustomerForm', () => {
         expect(firstNameField().value).toEqual('Ashley');
     });
 
+    const labelFor = formElement => container.querySelector(`label[for="${formElement}"]`);
+    it("renders a lebel for the first name field", () => {
+        render(<CustomerForm />);
+        expect(labelFor('firstName')).not.toBeNull();
+        expect(labelFor('firstName').textContent).toEqual("First Name: ");
+    });
+
+    it("assigns an id that matches the label id to the first name field", () => {
+        render(<CustomerForm />);
+        expect(firstNameField().id).toEqual('firstName');
+    });
 });
